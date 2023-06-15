@@ -8,7 +8,7 @@ export default defineConfig({
     include: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
     globals: true,
     environment: 'jsdom',
-    setupFiles: 'setupTests',
+    setupFiles: 'setupTests.ts',
     mockReset: true,
   },
 });
