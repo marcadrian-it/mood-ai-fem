@@ -16,9 +16,9 @@ const parser = StructuredOutputParser.fromZodSchema(
       ),
     mood: z
       .string()
-      .describe('the mood of the person who wrote the journal entry.'),
-    summary: z.string().describe('quick summary of the entire entry.'),
-    subject: z.string().describe('the subject of the journal entry.'),
+      .describe('the mood of the person who wrote the journal entry in the native language of an entry.'),
+    summary: z.string().describe('quick summary of the entire entry in the native language of an entry.'),
+    subject: z.string().describe('the subject of the journal entry in the native language of an entry.'),
     negative: z
       .boolean()
       .describe(
@@ -27,7 +27,7 @@ const parser = StructuredOutputParser.fromZodSchema(
     color: z
       .string()
       .describe(
-        'a hexidecimal color code that represent the mood of the journal entry. Example #0101fe for blue representing happiness.'
+        'a hexidecimal color code that represents the mood of the journal entry. For example, #0101fe for blue representing happiness, #ff0000 for red representing anger, #00ff00 for green representing calmness, etc.'
       ),
   })
 );
@@ -37,7 +37,7 @@ const getPrompt = async (content) => {
 
   const prompt = new PromptTemplate({
     template:
-      'Analyze the following journal entry. Follow the intrusctions and format your response to match the format instructions, no matter what! \n{format_instructions}\n{entry}',
+      'Analyze the following journal entry. Also, if entry is in other language interpret in their language, try to sound native. Follow the intructions and format your response to match the format instructions, no matter what! \n{format_instructions}\n{entry}',
     inputVariables: ['entry'],
     partialVariables: { format_instructions },
   });

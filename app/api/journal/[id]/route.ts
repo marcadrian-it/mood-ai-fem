@@ -15,11 +15,11 @@ export const PATCH = async (request: Request, { params }) => {
       },
     },
     data: {
-      content,
+      ...content,
     },
   });
 
-  await prisma.analysis.update({
+  const updated = await prisma.analysis.update({
     where: {
       entryId: updatedEntry.id,
     },
@@ -29,5 +29,5 @@ export const PATCH = async (request: Request, { params }) => {
     },
   });
 
-  return NextResponse.json({ data: updatedEntry });
+  return NextResponse.json({ data: updatedEntry, analysis: updated });
 };
