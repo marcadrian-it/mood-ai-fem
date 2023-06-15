@@ -16,9 +16,19 @@ const parser = StructuredOutputParser.fromZodSchema(
       ),
     mood: z
       .string()
-      .describe('the mood of the person who wrote the journal entry in the native language of an entry.'),
-    summary: z.string().describe('quick summary of the entire entry in the native language of an entry.'),
-    subject: z.string().describe('the subject of the journal entry in the native language of an entry.'),
+      .describe(
+        'the mood of the person who wrote the journal entry in the native language of an entry.'
+      ),
+    summary: z
+      .string()
+      .describe(
+        'quick summary of the entire entry in the native language of an entry.'
+      ),
+    subject: z
+      .string()
+      .describe(
+        'the subject of the journal entry in the native language of an entry.'
+      ),
     negative: z
       .boolean()
       .describe(
